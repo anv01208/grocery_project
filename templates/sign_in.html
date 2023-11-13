@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="w-50 p-3" align="left" style="border : 2px solid gray;border-radius:10px; margin-top:10px;" >
+   <form action="" method="post">
+       {%csrf_token%}
+        <div class="mb-3">
+            <label for="InputEmail1" class="form-label">Email address</label>
+            {% if error %}
+            <input type="email" class="form-control border-danger" id="InputEmail1" aria-describedby="emailHelp"
+                   placeholder="Example@example.com" name="email" value="{{email}}">
+            {% else %}
+             <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"
+                   placeholder="Example@example.com" name="email">
+            {%endif%}
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+
+
+       <div class="mb-3">
+            <label for="InputUsername" class="form-label">Username</label>
+            <input type="text" class="form-control border-danger" id="InputUsername"
+                   placeholder="Username" name="username">
+
+        <div class="mb-3">
+            <label for="InputPassword1" class="form-label">Password</label>
+            {%if error %}
+            <input type="password" class="form-control border-danger" id="InputPassword1"
+                   placeholder="Password" name="password">
+            {%else%}
+            <input type="password" class="form-control" id="InputPassword1"
+                   placeholder="Password" name="password">
+            {%endif%}
+        </div>
+
+
+       {%if error%}
+       <p class="font-monospace" style="color:red;" >{{error}}</p>
+        {%endif%}
+        <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+    </div>
+{%endblock%}
